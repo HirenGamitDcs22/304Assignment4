@@ -29,16 +29,23 @@ router.post("/retrieve/:pname", (req,res)=>{
 //update company (add/remove products)
 router.put("/updatecompany/:cname",(req,res)=>{
     const cname=req.params.cname;
-    const companydata=companyData.filter((c)=>c.name === cname)
-    return res.json({data:companydata});
+    const pid=req.body.pid;
+    const index=companyData.findIndex((c)=>c.name === cname);
+    if(index>=0){
+        companyData[index].product_id.push(pid)
+        return res.json({"after update":companyData});
+    }
+    return res.json({data:"Company data not found"});
 });
 
 //delete company
-router.delete("/delcompany/:id",(req,res)=>{
-    const cid=req.params.id;
-    const companydata=companyData.filter((c)=>c.company_id === cid)
-    const index=companyData.indexof(companydata);
-    return res.json({data:index});
+router.delete("/delcompany/:name",(req,res)=>{
+    const cname=req.params.name; 
+    const index=companyData.findIndex((c)=>c.name === cname);
+    if(index>=0){
+        return res.json({"Deleted Company Record":companyData.splice(index,1),data:companyData});
+    }
+    return res.json({data:"Company data not found"});
 });
 
 module.exports=router;

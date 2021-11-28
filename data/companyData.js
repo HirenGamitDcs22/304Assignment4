@@ -1,8 +1,3 @@
-/* <------ COMPANY ------>
-company id : String
-name : String
-product ids : Array of String
- */
 const companyData=[{
     company_id : "1",
     name : "lg",

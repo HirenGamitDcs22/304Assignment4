@@ -1,33 +1,18 @@
-/* <------ PRODUCT ------>
-product id : String
-title : String
-price : String
-category : Array of String
-company id : String
-seller id : Array of String */
-
 const productData=[{
     product_id:"1",
-    title:"laptop",
-    price:"",
-    category:["1","4","5"],
+    title:"LG C1 65 (165.1cm) 4K Smart OLED TV",
+    price:"300000",
+    category:["Tv"],
     company_id:"1",
     seller_id:["10"]
 },{
     product_id:"2",
-    title:"",
-    price:"",
-    category:["1","4","5"],
-    company_id:"",
+    title:"Lenovo Yoga Pro 14s",
+    price:"80000",
+    category:["Everyday Computing"],
+    company_id:"2",
     seller_id:["10"]
-},{
-    product_id:"10",
-    title:"",
-    price:"",
-    category:["1","4","5"],
-    company_id:"",
-    seller_id:["10"]
-},
+}
 ]
 
 module.exports=productData;
