@@ -10,23 +10,14 @@ router.get("/list",(req,res)=>{
     return res.json({data:companyData});
 });
 
-router.post("/addcompany/:cid/:name/:pid",(req,res)=>{
-    
-    const cid=req.params.cid;
-    const name=req.params.name;
-    const pid=req.params.pid;
-
-    
-    const msg=companyData.push({comany_id:cid,name:name,product_id:pid});
-    return res.json({data:msg});
-});
+//add new company
 router.post("/addcompany",(req,res)=>{
     const {newCompany}=req.body;
-   // userModel.create(newSeller);
-    
-    const msg=companyData.push(newCompany);
-    return res.json({data:msg});
-})
+    companyData.push(newCompany);
+    return res.json({data:companyData});
+});
+
+//fetch company details based on product name
 router.post("/retrieve/:pname", (req,res)=>{
     const pname=req.params.pname;
     const product= productData.filter((p)=>p.title === pname);
@@ -35,12 +26,14 @@ router.post("/retrieve/:pname", (req,res)=>{
     return res.json({data:company});
 });
 
+//update company (add/remove products)
 router.put("/updatecompany/:cname",(req,res)=>{
     const cname=req.params.cname;
     const companydata=companyData.filter((c)=>c.name === cname)
     return res.json({data:companydata});
 });
 
+//delete company
 router.delete("/delcompany/:id",(req,res)=>{
     const cid=req.params.id;
     const companydata=companyData.filter((c)=>c.company_id === cid)
